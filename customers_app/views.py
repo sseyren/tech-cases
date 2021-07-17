@@ -3,6 +3,7 @@ from django.views import generic
 from django import urls
 
 from .models import Customer
+from .forms import CustomerForm
 
 class CustomerListView(generic.ListView):
     model = Customer
@@ -10,14 +11,14 @@ class CustomerListView(generic.ListView):
 
 class CustomerCreateView(generic.edit.CreateView):
     model = Customer
-    fields = ["tr_id", "first_name", "last_name", "phone", "province", "district"]
+    form_class = CustomerForm
 
 class CustomerDetailView(generic.DetailView):
     model = Customer
 
 class CustomerUpdateView(generic.UpdateView):
     model = Customer
-    fields = ["tr_id", "first_name", "last_name", "phone", "province", "district"]
+    form_class = CustomerForm
 
 class CustomerDeleteView(generic.DeleteView):
     model = Customer
