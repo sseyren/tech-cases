@@ -6,6 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Customer
 from .forms import CustomerForm, CustomerSearchForm
 
+
 class CustomerListView(LoginRequiredMixin, generic.ListView):
     model = Customer
 
@@ -44,16 +45,20 @@ class CustomerListView(LoginRequiredMixin, generic.ListView):
 
         return context
 
+
 class CustomerCreateView(LoginRequiredMixin, generic.edit.CreateView):
     model = Customer
     form_class = CustomerForm
 
+
 class CustomerDetailView(LoginRequiredMixin, generic.DetailView):
     model = Customer
+
 
 class CustomerUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Customer
     form_class = CustomerForm
+
 
 class CustomerDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Customer

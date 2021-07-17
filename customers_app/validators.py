@@ -1,5 +1,6 @@
 from django.core.exceptions import ValidationError
 
+
 def phone_number_validator(value):
     if not value.isnumeric():
         raise ValidationError("Telefon numarası sadece rakamlardan oluşmalı.")

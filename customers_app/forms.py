@@ -4,12 +4,14 @@ from localflavor.tr.tr_provinces import PROVINCE_CHOICES
 
 from .models import Customer
 
+
 class CustomerForm(forms.ModelForm):
     tr_id = TRIdentificationNumberField(label="TC Kimlik Numarası")
 
     class Meta:
         model = Customer
         fields = "__all__"
+
 
 class CustomerSearchForm(forms.Form):
     pk = forms.IntegerField(label="ID", required=False)
