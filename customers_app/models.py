@@ -16,6 +16,9 @@ class Customer(models.Model):
     province = models.CharField("İl", max_length=2, choices=PROVINCE_CHOICES)
     district = models.CharField("İlçe", max_length=20)
 
+    class Meta:
+        ordering = ['-pk']
+
     def __str__(self):
         return f"{self.first_name} {self.last_name} ({self.tr_id})"
 
