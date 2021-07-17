@@ -1,5 +1,6 @@
 from django import forms
 from localflavor.tr.forms import TRIdentificationNumberField
+from localflavor.tr.tr_provinces import PROVINCE_CHOICES
 
 from .models import Customer
 
@@ -16,7 +17,9 @@ class CustomerSearchForm(forms.Form):
     first_name = forms.CharField(label="Adı", required=False)
     last_name = forms.CharField(label="Soyadı", required=False)
     phone = forms.CharField(label="Telefon Numarası", required=False)
-    province = forms.CharField(label="İl", required=False)
+    province = forms.ChoiceField(label="İl", choices=(
+        (None, ""), *PROVINCE_CHOICES), required=False, initial=None)
     district = forms.CharField(label="İlçe", required=False)
 
-    page_size = forms.IntegerField(label="Sayfa Boyutu", min_value=1, initial=25)
+    page_size = forms.IntegerField(
+        label="Sayfa Boyutu", min_value=1, initial=25)

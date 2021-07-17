@@ -34,7 +34,7 @@
         <td>{{ customer.tr_id }}</td>
         <td>{{ customer.first_name }} {{ customer.last_name }}</td>
         <td>{{ customer.phone }}</td>
-        <td>{{ customer.province }} / {{ customer.district }}</td>
+        <td>{{ customer.get_province_display }} / {{ customer.district }}</td>
         <td><a href="{% url 'update' pk=customer.pk %}">Güncelle</a></td>
         <td><a href="{% url 'delete' pk=customer.pk %}">Sil</a></td>
     </tr>
