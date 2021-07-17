@@ -1,30 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
 <h1>Müşteriler</h1>
 
 <form method="get">
-    <ul style="list-style-type: none; padding-left: 10px;">
-        {{ form.as_ul }}
-        <input type="submit" value="Ara">
-    </ul>
+    <table class="form-table">
+        {{ form.as_table }}
+        <tr>
+            <td colspan="2" style="text-align:center">
+                <input type="submit" value="Ara">
+            </td>
+        </tr>
+    </table>
 </form>
 
-<ul>
+<p><a href="{% url 'new' %}">Yeni müşteri oluştur</a></p>
+
+<p>
+{% if object_list %}
+<table>
+    <tr>
+        <th>ID</th>
+        <th>TC Kimlik Nu.</th>
+        <th>Ad Soyad</th>
+        <th>Telefon Nu.</th>
+        <th>İl / İlçe</th>
+        <th></th>
+        <th></th>
+    </tr>
     {% for customer in object_list %}
-        <li>{{ customer.tr_id }}: {{ customer.first_name }} - {{ customer.last_name }}</li>
-    {% empty %}
-        <li>Hiç müşteri yok.</li>
+    <tr>
+        <td>{{ customer.pk }}</td>
+        <td>{{ customer.tr_id }}</td>
+        <td>{{ customer.first_name }} {{ customer.last_name }}</td>
+        <td>{{ customer.phone }}</td>
+        <td>{{ customer.province }} / {{ customer.district }}</td>
+        <td><a href="{% url 'update' pk=customer.pk %}">Güncelle</a></td>
+        <td><a href="{% url 'delete' pk=customer.pk %}">Sil</a></td>
+    </tr>
     {% endfor %}
-</ul>
+</table>
+{% else %}
+Hiç müşteri yok.
+{% endif %}
+</p>
 
 <p>
     <span>
         {% if page_obj.has_previous %}
-            <a href="?{{ queries.urlencode }}&page=1">&laquo; ilk</a>
-            <a href="?{{ queries.urlencode }}&page={{ page_obj.previous_page_number }}">önceki</a>
+        <a href="?{{ queries.urlencode }}&page=1">&laquo; ilk</a>
+        <a href="?{{ queries.urlencode }}&page={{ page_obj.previous_page_number }}">önceki</a>
         {% endif %}
         <span class="current">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
         {% if page_obj.has_next %}
-            <a href="?{{ queries.urlencode }}&page={{ page_obj.next_page_number }}">sonraki</a>
-            <a href="?{{ queries.urlencode }}&page={{ page_obj.paginator.num_pages }}">son &raquo;</a>
+        <a href="?{{ queries.urlencode }}&page={{ page_obj.next_page_number }}">sonraki</a>
+        <a href="?{{ queries.urlencode }}&page={{ page_obj.paginator.num_pages }}">son &raquo;</a>
         {% endif %}
     </span>
 </p>
+{% endblock %}

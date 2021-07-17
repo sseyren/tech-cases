@@ -1,6 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p>Bu müşteriyi silmek istediğinizden emin misiniz?</p>
+
+{% include 'customers_app/detail_component.html' %}
+
 <form method="post">
     {% csrf_token %}
-    <p>Bu müşteriyi silmek istediğinizden emin misiniz?</p>
-    <p>"{{ object }}"</p>
     <input type="submit" value="Evet">
 </form>
+{% endblock %}
