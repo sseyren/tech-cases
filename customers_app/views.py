@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.views import generic
 from django import urls
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Customer
 from .forms import CustomerForm, CustomerSearchForm
 
-class CustomerListView(generic.ListView):
+class CustomerListView(LoginRequiredMixin, generic.ListView):
     model = Customer
 
     def get_queryset(self):
@@ -43,17 +44,17 @@ class CustomerListView(generic.ListView):
 
         return context
 
-class CustomerCreateView(generic.edit.CreateView):
+class CustomerCreateView(LoginRequiredMixin, generic.edit.CreateView):
     model = Customer
     form_class = CustomerForm
 
-class CustomerDetailView(generic.DetailView):
+class CustomerDetailView(LoginRequiredMixin, generic.DetailView):
     model = Customer
 
-class CustomerUpdateView(generic.UpdateView):
+class CustomerUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Customer
     form_class = CustomerForm
 
-class CustomerDeleteView(generic.DeleteView):
+class CustomerDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Customer
     success_url = urls.reverse_lazy("list")
