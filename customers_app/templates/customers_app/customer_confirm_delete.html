@@ -1,0 +1,6 @@
+<form method="post">
+    {% csrf_token %}
+    <p>Bu müşteriyi silmek istediğinizden emin misiniz?</p>
+    <p>"{{ object }}"</p>
+    <input type="submit" value="Evet">
+</form>
