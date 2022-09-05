@@ -1,5 +1,6 @@
 dj-rest-auth[with_social]==2.2.5
 Django==4.1.1
 django-countries==7.3.2
+django-filter==22.1
 djangorestframework==3.13.1
 Pillow==9.2.0
