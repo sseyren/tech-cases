@@ -14,8 +14,14 @@ class CompanyFilter(filters.FilterSet):
         fields = ['type', 'country']
 
 
-class CompanyList(generics.ListAPIView):
+class CompanyListView(generics.ListCreateAPIView):
     queryset = Company.objects.all()
     serializer_class = CompanySerializer
     filter_backends = [filters.DjangoFilterBackend]
     filterset_class = CompanyFilter
+
+
+class CompanyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Company.objects.all()
+    serializer_class = CompanySerializer
+
