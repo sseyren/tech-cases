@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 
 from django_countries.fields import CountryField
@@ -17,6 +18,8 @@ class Company(models.Model):
     country = CountryField()
     url = models.URLField(blank=True)
     employee_count = models.PositiveIntegerField(default=0)
+
+    likes = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True)
 
     def __str__(self):
         return f"{self.name} ({self.id})"
