@@ -6,6 +6,8 @@ django-filter==22.1
 djangorestframework==3.13.1
 Pillow==9.2.0
 
+gunicorn~=20.1.0
+
 # openapi
 uritemplate~=4.1.1
 PyYAML~=6.0
