@@ -7,3 +7,7 @@ class CompanySerializer(serializers.ModelSerializer):
     class Meta:
         model = Company
         exclude = ['likes']
+
+
+class FollowSerializer(serializers.Serializer):
+    follow = serializers.BooleanField(required=False)
