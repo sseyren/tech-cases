@@ -154,3 +154,5 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ]
 }
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'
