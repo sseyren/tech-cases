@@ -1,6 +1,6 @@
 - [x] User login and registration
 - [x] Company model CRUD
 - [x] Listing companies based of filters
-- [x] Following companies and listing
+- [x] Following companies and user following list
 - [x] Unit tests
 - [x] Dockerfile and compose
